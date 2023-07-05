@@ -4,109 +4,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JavaScript Code Quiz</title>
-  <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="stylesheet" href="./assets/styles.css" type="text">
+  <title>JavaScript Quiz</title>
 </head>
 
 <body>
-
-  <h1>JavaScript Quiz</h1>
-  <form id="quiz-form">
-    <ol>
-      <li>
-        <p>Question 1: What is the output of the following code?</p>
-        <code>console.log(typeof null);</code>
-        <select name="q1" id="q1">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">string</option>
-          <option value="b">number</option>
-          <option value="c">object</option>
-          <option value="d">null*</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 2: Which keyword is used to declare a constant variable?</p>
-        <select name="q2" id="q2">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">var</option>
-          <option value="b">let</option>
-          <option value="c">const*</option>
-          <option value="d">const var</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 3: What is the purpose of the `typeof` operator in JavaScript?</p>
-        <select name="q3" id="q3">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">To check if a variable is defined</option>
-          <option value="b">To check the data type of a value*</option>
-          <option value="c">To compare two variables</option>
-          <option value="d">To perform mathematical operations</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 4: Which function is used to parse a string and return a floating-point number?</p>
-        <select name="q4" id="q4">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">parseInt</option>
-          <option value="b">parseFloat*</option>
-          <option value="c">toFixed</option>
-          <option value="d">Math.round</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 5: Which of the following is NOT a valid way to declare a function in JavaScript?</p>
-        <select name="q5" id="q5">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">function myFunction() {}</option>
-          <option value="b">const myFunction = function() {}</option>
-          <option value="c">const myFunction = () => {}</option>
-          <option value="d">let myFunction = {};</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 6: What does the `===` operator do in JavaScript?</p>
-        <select name="q6" id="q6">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">Checks if two values are equal, including type comparison*</option>
-          <option value="b">Assigns a value to a variable</option>
-          <option value="c">Compares two values without type comparison</option>
-          <option value="d">Performs bitwise XOR operation</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 7: Which of the following is a correct way to write a JavaScript array?</p>
-        <select name="q7" id="q7">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">[1, 2, 3, 4]</option>
-          <option value="b">(1, 2, 3, 4)</option>
-          <option value="c">{1, 2, 3, 4}</option>
-          <option value="d">"1, 2, 3, 4"*</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 8: What is the purpose of the <strong>'querySelector()'</strong> method in JavaScript?</p>
-        <select name="q8" id="q8">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">To select and modify HTML elements</option>
-          <option value="b">To execute a function repeatedly</option>
-          <option value="c">To select an element based on its CSS class or ID*</option>
-          <option value="d">To add event listeners to elements</option>
-        </select>
-      </li>
-      <li>
-        <p>Question 9: How do you write a conditional statement in JavaScript?</p>
-        <select name="q9" id="q9">
-          <option value="" selected disabled>Select an option</option>
-          <option value="a">if-else statement*</option>
-          <option value="b">while loop</option>
-          <option value="c"> for loop</option>
-          <option value="d">switch statement</option>
-        </select>
-      </li>
+  <header>
+    <nav>
+      <a href="high-scores.html">View High-Scores</a>
+    </nav>
+  </header>
+  <div id="container">
+    <div id="timer"></div>
+    <div id="quizContent">
+      <h1>JavaScript Fundamentals Quiz</h1>
+      <p>In this quiz, you will be challenged with code-related questions that test your JavaScript knowledge. Time is
+        limited, <strong>for every incorrect answer, you'll face a penalty of ten seconds deducted from your remaining
+          time.</strong> So, accuracy is just as important as speed!</p>
+      <ul id="listedOptions"></ul>
+      <button id="startButton" class="quizButton">Begin Quiz!</button>
 
 
-      <script src="./assets/app.js"></script>
+    </div>
+
+  </div>
 </body>
 
 </html>
