@@ -66,7 +66,7 @@ var createUl = document.createElement('ul');
 createUl.setAttribute('id','listedOptions');
 
 var timeInterval = 0;
-var countdown = 75;
+var countdown = 100;
 var penalty = 10;
 
 // ******** Start quiz
@@ -80,7 +80,7 @@ startButton.addEventListener('click', function(){
         clearInterval(timeInterval);
         theEnd();
       }
-    }, 1500);
+    }, 1000);
   }
   newQuestion(questionIndex);
 
@@ -117,6 +117,12 @@ createDiv.setAttribute('id', 'createDiv');
 // Right or Wrong. Show results of choice
 function checkAnswer(event){
   var choice = event.target;
+  var quizContChildren = quizContent.children
+  console.log('children', quizContChildren)
+  if (quizContChildren[2]) {
+    console.log('it was here')
+    quizContChildren[2].remove();
+  }
   quizContent.appendChild(createDiv);
   createDiv.appendChild(feedback);
   var next = document.createElement('button');
