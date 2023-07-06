@@ -1,6 +1,7 @@
 html {
   font-family: monospace;
   height: 100%;
+  font-size: 16px;
 }
 
 body {
@@ -48,8 +49,30 @@ button {
   align-items: center;
   max-width: 50%;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 0;
   height: 75%;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   padding: 20px 0;
+}
+
+ul#listedOptions {
+  list-style-type: none;
+}
+
+ul#listedOptions>li {
+  margin: 1rem;
+}
+
+ul#listedOptions>li>button {
+  margin: 0.4rem;
+  background-color: #ee426b;
+  font-size: 1.5rem;
+  border-style: hidden;
+  width: 100%;
+
+}
+
+ul#listedOptions>li>button:hover {
+  filter: drop-shadow(2px 4px 6px #8b0223);
+  border: 6px inset #f49cae;
 }

@@ -19,21 +19,21 @@ var questions = [
     options:['var','let','const', 'const var'],
     answer:'const'
   },
-  {
+  /*{
     prompt:'What is the purpose of the `typeof` operator in JavaScript?',
     options:['To check if a variable is defined', 'To check the data type of a value', 'To compare two variables', 'To perform mathematical operations'  ],
     answer:'To check the data type of a value'
-  },
+  },*/
   {
     prompt:'Which function is used to parse a string and return a floating-point number?',
     options:['parseInt','parseFloat', 'toFixed','Math.round' ],
     answer:'parseFloat'
   },
-  {
+ /*{
     prompt:'Which of the following is NOT a valid way to declare a function in JavaScript?',
     options:[`function myFunction() {}`, `const myFunction = function() {}`, 'const myFunction = () => {}','let myFunction = {};'  ],
     answer:'let myFunction = {};'
-  },
+  },*/
   {
     prompt:'What does the `===` operator do in JavaScript?',
     options:['Checks if two values are equal, including type comparison', 'Assigns a value to a variable', 'Compares two values without type comparison', 'Performs bitwise XOR operation'],
@@ -44,11 +44,11 @@ var questions = [
     options:['Keywords', 'Data types', 'Declaration statements', 'Prototypes' ],
     answer:'Declaration statements'
   },
-  {
+ /* {
     prompt:'What is the purpose of the querySelector() method in JavaScript?',
     options:['To select and modify HTML elements', 'To execute a function repeatedly', 'To select an element based on its CSS class or ID', 'To add event listeners to elements'],
     answer:'To select an element based on its CSS class or ID'
-  },
+  },*/
   {
     prompt:'How do you write a conditional statement in JavaScript?',
     options:['if-else statement', 'while loop', ' for loop', 'switch statement'],
@@ -92,9 +92,9 @@ function newQuestion(questionIndex){
     quizContent.innerHTML='';
     createUl.innerHTML = '';
     var displayQuestion = document.createElement('h2');
-
+//this function builds the question to be displayed
     for (var i = 0; i < questions.length; i++) {
-        displayQuestion.innerHTML = questions[questionIndex].title;
+        displayQuestion.innerHTML = questions[questionIndex].prompt;
         var displayOptions = questions[questionIndex].options;
         quizContent.appendChild(displayQuestion);
     }
@@ -177,4 +177,53 @@ function theEnd () {
     quizContent.appendChild(resultsP);
   }
 
-}
+  //Submit Initials and save Score
+
+  var initialsPrompt = document.createElement('label');
+  initialsPrompt.setAttribute('for', 'inputBox');
+  initialsPrompt.textContent = 'Enter your initials: ';
+  quizContent.appendChild(initialsPrompt);
+
+  var inputBox = document.createElement ('input');
+  inputBox.setAttribute('type', 'Text');
+  inputBox.setAttribute('id', 'inputBox');
+  inputBox.textContent = '';
+  quizContent.appendChild(inputBox);
+
+  var submit = document.createElement('button');
+  submit.setAttribute('type', 'submit');
+  submit.setAttribute('id', 'submit');
+  submit.textContent = 'submit';
+  quizContent.appendChild(submit);
+
+  //Event listener to submit and store initials and score
+  submit.addEventListener('click', function(){
+    var initials = inputBox.value;
+    
+    if (initials === ''){
+      console.log('No initials entered');
+      alert('Please enter your initials');
+    } else {
+      var finalScore = {
+        initials: initials,
+        score: score
+      }
+
+      //Storing the past scores
+      var savedScore = localStorage.getItem('savedScore');
+  if ('savedScore === null') {
+      savedScore = []; // ! why use this?
+  } else {
+    savedScore = JSON.parse(savedScore);
+  }
+  savedScore.push(finalScore);
+  var newScore = JSON.stringify(savedScore);
+  localStorage.setItem('savedScore', newScore);
+  window.location.replace('high-scores.html');
+    }
+
+  });
+  
+
+};
+
