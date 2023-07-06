@@ -1,3 +1,5 @@
+//******** Setup variables and quiz questions
+
 var score = 0;
 var container = document.querySelector('#container');
 var quizContent = document.querySelector('#quizContent');
@@ -58,3 +60,121 @@ var questions = [
     answer:'Object'
   },
 ]
+
+var questionIndex = 0;
+var createUl = document.createElement('ul');
+createUl.setAttribute('id','listedOptions');
+
+var timeInterval = 0;
+var countdown = 75;
+var penalty = 10;
+
+// ******** Start quiz
+
+startButton.addEventListener('click', function(){
+  if (timeInterval === 0){
+    timeInterval = setInterval(function(){
+      countdown--;
+      timer.textContent = `Time: ${countdown}`;
+      if (countdown <= 0){
+        clearInterval(timeInterval);
+        theEnd();
+      }
+    }, 1500);
+  }
+  newQuestion(questionIndex);
+
+});
+
+// ******** Generate New Question
+
+function newQuestion(questionIndex){
+    quizContent.innerHTML='';
+    createUl.innerHTML = '';
+    var displayQuestion = document.createElement('h2');
+
+    for (var i = 0; i < questions.length; i++) {
+        displayQuestion.innerHTML = questions[questionIndex].title;
+        var displayOptions = questions[questionIndex].options;
+        quizContent.appendChild(displayQuestion);
+    }
+    console.log(displayOptions);
+    displayOptions.forEach( function (newItem){
+      var listItem = document.createElement('li');
+      listItem.innerHTML += '<button>' + newItem + '</button>';
+      quizContent.appendChild(createUl);
+      createUl.appendChild(listItem);
+      listItem.addEventListener('click', (checkAnswer));
+    })
+
+}
+
+var i = 0;
+var createDiv = document.createElement('div');
+var feedback = document.createElement ('h3');
+createDiv.setAttribute('id', 'createDiv');
+
+// Right or Wrong. Show results of choice
+function checkAnswer(event){
+  var choice = event.target;
+  quizContent.appendChild(createDiv);
+  createDiv.appendChild(feedback);
+  var next = document.createElement('button');
+  next.setAttribute('id', 'nextButton');
+  next.textContent = 'Next Question';
+
+  //Feedback for Right answer
+  if (choice.textContent == questions[questionIndex].answer){
+    score++;
+    feedback.textContent = `✅ That's Right! Yay!!!`;
+    createDiv.appendChild(feedback);
+
+    createDiv.appendChild(next);
+    next.addEventListener('click', (continueQuiz));
+  } else {
+    //Feedback for Wrong answer
+    countdown = countdown - penalty;
+    feedback.textContent = `🚫 Wrong answer, Try again!!`
+    createDiv.appendChild(feedback);
+  }
+
+}
+
+// this function determines wether it's time to end the game or continue to the next question
+function continueQuiz(event){
+  createDiv.innerHTML = '';
+  questionIndex++;
+  if (questionIndex >= questions.length){
+    theEnd();
+  } else {
+    newQuestion(questionIndex);
+  }
+}
+
+function theEnd () {
+  quizContent.innerHTML = '';
+  timer.innerHTML = '';
+  // set up highscore page
+  var newTitle = document.createElement('h1');
+  newTitle.setAttribute('id', 'newTitle');
+  newTitle.textContent = 'Finished!';
+  quizContent.appendChild(newTitle);
+
+// calculate final score
+  if (countdown >= 0) {
+    score = countdown;
+    clearInterval(timeInterval);
+    var resultsP = document.createElement('p');
+    resultsP.textContent = `Your final score is: ${score}`
+    quizContent.appendChild(resultsP);
+  } else {
+    score = 0;
+    var outOfTime = document.createElement('h2');
+    outOfTime.textContent = `Time is up! 🕔`;
+    quizContent.appendChild(outOfTime);
+    var resultsP = document.createElement('p');
+    resultsP.textContent = `Your final score is: ${score}`
+    quizContent.appendChild(resultsP);
+  }
+
+}
