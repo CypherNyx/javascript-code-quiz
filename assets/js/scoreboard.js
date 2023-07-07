@@ -4,7 +4,7 @@ var backBtn = document.querySelector('#backBtnn');
 var resetBtn = document.querySelector('#fullReset');
 
 backBtn.addEventListener('click', function() {
-  location.replace('index.html');
+  window.location.replace('index.html');
 });
 
 resetBtn.addEventListener('click', function(){
@@ -15,12 +15,18 @@ resetBtn.addEventListener('click', function(){
 var savedScore = localStorage.getItem('savedScore');
 savedScore = JSON.parse(savedScore);
 
+var savedScore = JSON.parse(localStorage.getItem('savedScore')) || [];
+
+
 if (savedScore !== null ) {
   for (var i = 0; i < savedScore.length; i++) {
-    var addScore = document.createElement('li');
-    addScore.setAttribute('id', 'scoreLi');
+    var addScore = document.createElement("li");
+    addScore.setAttribute("id", "scoreLi");
     addScore.textContent = savedScore[i].initials + ' ' + savedScore[i].score;
 
     ScoreRank.appendChild(addScore);
   }
 };
+
+
+
