@@ -117,12 +117,8 @@ createDiv.setAttribute('id', 'createDiv');
 // Right or Wrong. Show results of choice
 function checkAnswer(event){
   var choice = event.target;
-  var quizContChildren = quizContent.children
-  console.log('children', quizContChildren)
-  if (quizContChildren[2]) {
-    console.log('it was here')
-    quizContChildren[2].remove();
-  }
+  createDiv.innerHTML = '';
+ 
   quizContent.appendChild(createDiv);
   createDiv.appendChild(feedback);
   var next = document.createElement('button');
@@ -218,7 +214,7 @@ function theEnd () {
       //Storing the past scores
       var savedScore = localStorage.getItem('savedScore');
   if ('savedScore === null') {
-      savedScore = []; // ! why use this?
+      savedScore = []; 
   } else {
     savedScore = JSON.parse(savedScore);
   }
