@@ -213,15 +213,15 @@ function theEnd () {
 
       //Storing the past scores
       var savedScore = localStorage.getItem('savedScore');
-  if ('savedScore === null') {
-      savedScore = []; 
-  } else {
-    savedScore = JSON.parse(savedScore);
-  }
-  savedScore.push(finalScore);
-  var newScore = JSON.stringify(savedScore);
-  localStorage.setItem('savedScore', newScore);
-  window.location.replace('high-scores.html');
+      if (savedScore === null) {
+          savedScore = []; 
+      } else {
+          savedScore = JSON.parse(savedScore);
+      }
+      savedScore.push(finalScore);
+      var newScore = JSON.stringify(savedScore);
+      localStorage.setItem('savedScore', newScore);
+      window.location.replace('high-scores.html');
     }
 
   });
