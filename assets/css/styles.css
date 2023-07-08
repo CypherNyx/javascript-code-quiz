@@ -67,12 +67,24 @@ ul#listedOptions>li>button {
   margin: 0.4rem;
   background-color: #ee426b;
   font-size: 1.5rem;
+  filter: drop-shadow(4px 4px 4px #b91e42);
   border-style: hidden;
   width: 100%;
 
 }
 
 ul#listedOptions>li>button:hover {
-  filter: drop-shadow(2px 4px 6px #8b0223);
+  filter: drop-shadow(2px 2px 2px #8b0223);
+  transition: filter 0.3s ease;
   border: 6px inset #f49cae;
+}
+
+#showAllScores {
+  list-style-type: none;
+  padding: 1rem;
+  text-align: center;
+}
+
+#showAllScores li {
+  margin-bottom: 10px;
 }

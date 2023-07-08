@@ -1,6 +1,6 @@
 var ScoreBoard = document.querySelector('#quizContent');
 var ScoreRank = document.querySelector('#showAllScores');
-var backBtn = document.querySelector('#backBtnn');
+var backBtn = document.querySelector('#backBtn');
 var resetBtn = document.querySelector('#fullReset');
 
 backBtn.addEventListener('click', function() {
@@ -27,6 +27,10 @@ if (savedScore !== null ) {
     ScoreRank.appendChild(addScore);
   }
 };
+
+console.log(savedScore);
+
+console.log(ScoreRank);
 
 
 
