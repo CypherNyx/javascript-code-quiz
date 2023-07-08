@@ -6,6 +6,7 @@ html {
 
 body {
   background: linear-gradient(45deg, hsla(44, 95%, 78%, 1) 0%, hsla(345, 79%, 60%, 1) 100%);
+  background-attachment: fixed;
 }
 
 header {
@@ -19,8 +20,7 @@ nav {
   font-weight: 800;
   border: 6px #800080 outset;
   background-color: #d285e5;
-  display: flex;
-  flex-wrap: wrap;
+
 
 }
 
@@ -32,6 +32,10 @@ nav a {
 
 h1 {
   font-size: 2.5em;
+}
+
+h2 {
+  text-align: center;
 }
 
 button {
@@ -51,7 +55,6 @@ button {
   margin: auto;
   margin-top: 0;
   height: 75%;
-  /* box-sizing: border-box; */
   padding: 20px 0;
 }
 
@@ -87,4 +90,8 @@ ul#listedOptions>li>button:hover {
 
 #showAllScores li {
   margin-bottom: 10px;
+}
+
+#createDiv {
+  text-align: center;
 }
