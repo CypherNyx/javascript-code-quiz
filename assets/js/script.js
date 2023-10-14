@@ -9,61 +9,61 @@ var startButton = document.querySelector('#startButton');
 
 var questions = [
   {
-    prompt:`What is the output of the following code?
-    console.log(typeof null);`,
-    options:['string', 'number','object','null' ],
-    answer:'null'
+    prompt: 'What is the purpose of JavaScript in web development?',
+    options: ['To define styles for web pages', 'To create database tables', 'To structure the layout of web pages', 'To add interactivity and functionality to web pages'],
+    answer: 'To add interactivity and functionality to web pages'
   },
   {
-    prompt:'Which keyword is used to declare a constant variable?',
-    options:['var','let','const', 'const var'],
-    answer:'const'
-  },
-  /*{
-    prompt:'What is the purpose of the `typeof` operator in JavaScript?',
-    options:['To check if a variable is defined', 'To check the data type of a value', 'To compare two variables', 'To perform mathematical operations'  ],
-    answer:'To check the data type of a value'
-  },*/
-  {
-    prompt:'Which function is used to parse a string and return a floating-point number?',
-    options:['parseInt','parseFloat', 'toFixed','Math.round' ],
-    answer:'parseFloat'
-  },
- /*{
-    prompt:'Which of the following is NOT a valid way to declare a function in JavaScript?',
-    options:[`function myFunction() {}`, `const myFunction = function() {}`, 'const myFunction = () => {}','let myFunction = {};'  ],
-    answer:'let myFunction = {};'
-  },*/
-  {
-    prompt:'What does the `===` operator do in JavaScript?',
-    options:['Checks if two values are equal, including type comparison', 'Assigns a value to a variable', 'Compares two values without type comparison', 'Performs bitwise XOR operation'],
-    answer:'Checks if two values are equal, including type comparison'
+    prompt: `What is the primary function of the if statement in JavaScript?`,
+    options: ['Declare a function', 'Create a loop', 'Control the flow of code based on a condition', 'Define an array'],
+    answer: 'Control the flow of code based on a condition'
   },
   {
-    prompt:'The "function" and " var" are known as:',
-    options:['Keywords', 'Data types', 'Declaration statements', 'Prototypes' ],
-    answer:'Declaration statements'
-  },
- /* {
-    prompt:'What is the purpose of the querySelector() method in JavaScript?',
-    options:['To select and modify HTML elements', 'To execute a function repeatedly', 'To select an element based on its CSS class or ID', 'To add event listeners to elements'],
-    answer:'To select an element based on its CSS class or ID'
-  },*/
-  {
-    prompt:'How do you write a conditional statement in JavaScript?',
-    options:['if-else statement', 'while loop', ' for loop', 'switch statement'],
-    answer:'if-else statement'
+    prompt: 'How do you create a function in JavaScript?',
+    options: ['Using the def keyword', 'With function keyword', 'By typing new function()', 'With script tag'],
+    answer: 'With function keyword'
   },
   {
-    prompt:'A set of unordered properties that, has a name and value is called______',
-    options:['String', 'Array','Serialized Object','Object'],
-    answer:'Object'
+    prompt: 'What does the console.log() method do?',
+    options: ['Calculate mathematical expressions', 'Display messages in the browser console', 'Create an HTML form', 'Add an event listener'],
+    answer: 'Display messages in the browser console'
   },
+  {
+    prompt: 'What is a variable in JavaScript?',
+    options: ['A function declaration', 'A form input', 'A named container for storing data', 'A type of loop'],
+    answer: 'A named container for storing data'
+  },
+  {
+    prompt: 'What is the role of the for loop in JavaScript?',
+    options: ['To define a function', 'To include a library', 'To iterate over a block of code a specified number of times', 'To display a message box'],
+    answer: 'To iterate over a block of code a specified number of times'
+  },
+  {
+    prompt: 'What is the DOM in web development?',
+    options: ['A web browser', 'A web development framework', 'A web programming language', 'The Document Object Model representing a webpage'],
+    answer: 'The Document Object Model representing a webpage'
+  },
+  {
+    prompt: "What's the purpose of the addEventListener() method?",
+    options: ['To add two numbers together', 'To create a new element', 'To attach an event handler function to an HTML element', 'To define a constant'],
+    answer: 'To attach an event handler function to an HTML element'
+  },
+  {
+    prompt: "What's the purpose of the switch statement in JavaScript?",
+    options: ['To compare two variables', 'To define a new function', 'To execute a block of code based on different cases', 'To display a popup message'],
+    answer: 'To execute a block of code based on different cases'
+  },
+  {
+    prompt: 'How do you comment out multiple lines in JavaScript?',
+    options: ['Using /* and */ to enclose the comment', 'With // at the start of each line', 'By using <comment> tags', 'Using ** to mark comments'],
+    answer: 'Using /* and */ to enclose the comment'
+  }
+
 ]
 
 var questionIndex = 0;
 var createUl = document.createElement('ul');
-createUl.setAttribute('id','listedOptions');
+createUl.setAttribute('id', 'listedOptions');
 
 var timeInterval = 0;
 var countdown = 100;
@@ -71,12 +71,12 @@ var penalty = 10;
 
 // ******** Start quiz
 
-startButton.addEventListener('click', function(){
-  if (timeInterval === 0){
-    timeInterval = setInterval(function(){
+startButton.addEventListener('click', function () {
+  if (timeInterval === 0) {
+    timeInterval = setInterval(function () {
       countdown--;
       timer.textContent = `Time: ${countdown}`;
-      if (countdown <= 0){
+      if (countdown <= 0) {
         clearInterval(timeInterval);
         theEnd();
       }
@@ -88,37 +88,37 @@ startButton.addEventListener('click', function(){
 
 // ******** Generate New Question
 
-function newQuestion(questionIndex){
-    quizContent.innerHTML='';
-    createUl.innerHTML = '';
-    var displayQuestion = document.createElement('h2');
-//this function builds the question to be displayed
-    for (var i = 0; i < questions.length; i++) {
-        displayQuestion.innerHTML = questions[questionIndex].prompt;
-        var displayOptions = questions[questionIndex].options;
-        quizContent.appendChild(displayQuestion);
-    }
-    console.log(displayOptions);
-    displayOptions.forEach( function (newItem){
-      var listItem = document.createElement('li');
-      listItem.innerHTML += '<button>' + newItem + '</button>';
-      quizContent.appendChild(createUl);
-      createUl.appendChild(listItem);
-      listItem.addEventListener('click', (checkAnswer));
-    })
+function newQuestion(questionIndex) {
+  quizContent.innerHTML = '';
+  createUl.innerHTML = '';
+  var displayQuestion = document.createElement('h2');
+  //this function builds the question to be displayed
+  for (var i = 0; i < questions.length; i++) {
+    displayQuestion.innerHTML = questions[questionIndex].prompt;
+    var displayOptions = questions[questionIndex].options;
+    quizContent.appendChild(displayQuestion);
+  }
+  console.log(displayOptions);
+  displayOptions.forEach(function (newItem) {
+    var listItem = document.createElement('li');
+    listItem.innerHTML += '<button>' + newItem + '</button>';
+    quizContent.appendChild(createUl);
+    createUl.appendChild(listItem);
+    listItem.addEventListener('click', (checkAnswer));
+  })
 
 }
 
 var i = 0;
 var createDiv = document.createElement('div');
-var feedback = document.createElement ('h3');
+var feedback = document.createElement('h3');
 createDiv.setAttribute('id', 'createDiv');
 
 // Right or Wrong. Show results of choice
-function checkAnswer(event){
+function checkAnswer(event) {
   var choice = event.target;
   createDiv.innerHTML = '';
- 
+
   quizContent.appendChild(createDiv);
   createDiv.appendChild(feedback);
   var next = document.createElement('button');
@@ -126,7 +126,7 @@ function checkAnswer(event){
   next.textContent = 'Next Question';
 
   //Feedback for Right answer
-  if (choice.textContent == questions[questionIndex].answer){
+  if (choice.textContent == questions[questionIndex].answer) {
     score++;
     feedback.textContent = `✅ That's Right! Yay!!!`;
     createDiv.appendChild(feedback);
@@ -143,17 +143,17 @@ function checkAnswer(event){
 }
 
 // this function determines wether it's time to end the game or continue to the next question
-function continueQuiz(event){
+function continueQuiz(event) {
   createDiv.innerHTML = '';
   questionIndex++;
-  if (questionIndex >= questions.length){
+  if (questionIndex >= questions.length) {
     theEnd();
   } else {
     newQuestion(questionIndex);
   }
 }
 
-function theEnd () {
+function theEnd() {
   quizContent.innerHTML = '';
   timer.innerHTML = '';
   // set up highscore page
@@ -162,7 +162,7 @@ function theEnd () {
   newTitle.textContent = 'Finished!';
   quizContent.appendChild(newTitle);
 
-// calculate final score
+  // calculate final score
   if (countdown >= 0) {
     score = countdown;
     clearInterval(timeInterval);
@@ -186,7 +186,7 @@ function theEnd () {
   initialsPrompt.textContent = 'Enter your initials: ';
   quizContent.appendChild(initialsPrompt);
 
-  var inputBox = document.createElement ('input');
+  var inputBox = document.createElement('input');
   inputBox.setAttribute('type', 'Text');
   inputBox.setAttribute('id', 'inputBox');
   inputBox.textContent = '';
@@ -199,10 +199,10 @@ function theEnd () {
   quizContent.appendChild(submit);
 
   //Event listener to submit and store initials and score
-  submit.addEventListener('click', function(){
+  submit.addEventListener('click', function () {
     var initials = inputBox.value;
-    
-    if (initials === ''){
+
+    if (initials === '') {
       console.log('No initials entered');
       alert('Please enter your initials');
     } else {
@@ -214,9 +214,9 @@ function theEnd () {
       //Storing the past scores
       var savedScore = localStorage.getItem('savedScore');
       if (savedScore === null) {
-          savedScore = []; 
+        savedScore = [];
       } else {
-          savedScore = JSON.parse(savedScore);
+        savedScore = JSON.parse(savedScore);
       }
       savedScore.push(finalScore);
       var newScore = JSON.stringify(savedScore);
@@ -225,7 +225,7 @@ function theEnd () {
     }
 
   });
-  
+
 
 };
 
