@@ -18,8 +18,8 @@ nav {
   width: fit-content;
   padding: 0.65rem;
   font-weight: 800;
-  border: 6px #800080 outset;
-  background-color: #d285e5;
+  border: 6px #008080 outset;
+  background-color: #97FEED;
 
 
 }
@@ -39,12 +39,22 @@ h2 {
 }
 
 button {
-  background-color: purple;
+  background-color: #3F0071;
   color: white;
   padding: 1rem;
   border-radius: 1rem;
-  border: 2px ridge #2d0233;
+  border: 4px solid #A555EC;
   cursor: pointer;
+}
+
+#startButton {
+  background-color: #F11A7B;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: 4px solid #982176;
+  cursor: pointer;
+  font-size: 1.25rem;
 }
 
 #container {
@@ -77,9 +87,10 @@ ul#listedOptions>li>button {
 }
 
 ul#listedOptions>li>button:hover {
-  filter: drop-shadow(2px 2px 2px #8b0223);
+  filter: drop-shadow(2px 2px 2px #05403b);
   transition: filter 0.3s ease;
-  border: 6px inset #f49cae;
+  background-color: #008080;
+  color: white;
 }
 
 #showAllScores {
